@@ -2747,6 +2747,9 @@ form.login .lost_password {
 #main-nav .sub-menu li a:hover {
     color: #28c23e;
 }
+#main-nav .sub-menu li.current-menu-item a {
+    color: #28c23e;
+}
 
 #main-nav .sub-menu li:first-child > a {
     border: 0;
@@ -2977,7 +2980,12 @@ html.disable-scroll {
     cursor: pointer;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-
+#main-nav-mobi ul li.current-menu-item a,
+#main-nav-mobi ul li.current-menu-parent > a {
+    color: #28c23e !important;
+    opacity: 1;
+    width: 100%;
+}
 #main-nav-mobi ul li a {
     color: #fff;
     display: block;
@@ -3395,6 +3403,20 @@ html.disable-scroll {
     border-radius: 30px;
 }
 
+.ext > .header-button {
+    margin: 27px 0;
+    margin-left: 25px;
+}
+
+.ext > .header-button a {
+    display: inline-block;
+    width: 180px;
+    font-weight: 500;
+    letter-spacing: 0.25px;
+    text-align: center;
+    border-radius: 30px;
+}
+
 
 /* Header Styles
 -------------------------------------------------------------- */
@@ -3566,18 +3588,19 @@ html.disable-scroll {
     color: #fff;
 }
 
-.header-style-4 #site-header .header-button a {
+.header-style-4 #site-header .header-button a,
+.header-style-4 .ext > .header-button a {
     line-height: 42px;
     border: 2px solid #fff;
     color: #fff;
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-.header-style-4 #site-header .header-button a:hover {
+.header-style-4 #site-header .header-button a:hover,
+.header-style-4 .ext > .header-button a:hover {
     background-color: #fff;
-    color: #030f27;
+    color: #030f27 !important;
 }
-
 
 /* Header Style 5 */
 
@@ -10174,7 +10197,32 @@ ELEMENTS STYLE
     top: 0;
 }
 
+.bauer-simple-image.has-borders {
+    padding-right: 20px;
+    padding-bottom: 20px;
+    position: relative;
+}
+.bauer-simple-image.has-borders:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+    height: 80%;
+    z-index: 99999;
+    background-color: #28c23e;
+}
 
+.bauer-simple-image.has-borders:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 78%;
+    height: 20px;
+    z-index: 99999;
+    background-color: #28c23e;
+}
 /* Small */
 
 .bauer-video-icon.small a {
