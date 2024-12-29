@@ -647,6 +647,9 @@ img {
     max-width: 100%;
     height: auto;
 }
+img.width-auto {
+    width: auto !important;
+}
 
 select {
     max-width: 100%
