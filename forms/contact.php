@@ -1,40 +1,25 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
-
-  // Replace contact@example.com with your real receiving email address
   $receiving_email_address = 'praksh@vardhmanchemicalindustries.com';
-
-  if( file_exists($php_email_form = '../content/plugins/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
-
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $subject = $_POST['subject'];
+  $message = $_POST['message'];
+  $phoneno = $_POST['phone'];
   
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+  ini_set( 'display_errors', 1 );
+    error_reporting( E_ALL );
+    $from = "marketing@vardhmanchemicalindustries.com";
+    $to = $receiving_email_address;
+    $subject = $subject;
+    $message = 'Name : ' . $name . '
+    Contact Mail : ' . $email . '
+    Contact No : ' . $phoneno . '
+    Message : ' . $message;
+    $headers = "From:" . $from;
+    if(mail($to,$subject,$message, $headers)) {
+    echo "The email message was sent.";
+    } else {
+      echo "The email message was not sent.";
+    }
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
- 
-  $contact->smtp = array(
-    'host' => 'vardhmanchemicalindustries.com',
-    'username' => 'praksh',
-    'password' => 'Prakshvc@123',
-    'port' => '587'
-  );
-
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
-
-  echo $contact->send();
 ?>
