@@ -5,7 +5,8 @@
   $subject = $_POST['subject'];
   $message = $_POST['message'];
   $subject = $_POST['subject'];
-  $timenow =  new DateTime('NOW', new DateTimeZone('UTC'));
+  $submissionTime = new DateTime();
+  $formattedTime = $submissionTime->format('D, M j, Y g:i A (T)');
   
   ini_set( 'display_errors', 1 );
     error_reporting( E_ALL );
@@ -29,7 +30,7 @@
                     <hr>
                     <strong>Message : </strong><pre style='margin:0;white-space:pre-wrap'>' . $message . '</pre>
                     <hr>
-              <p style='text-align:center'>Submitted at '. $timenow .'</p>
+              <p style='text-align:center'>Submitted at '. $formattedTime .'</p>
           <br>
         <p>Our Team,</p>
         <a style='text-decoration:none' href='https://vardhmanchemicalindustries.com' target='_blank'><strong><span class='il'>Vardhman Chemical Industries</span> Team</strong></a>
