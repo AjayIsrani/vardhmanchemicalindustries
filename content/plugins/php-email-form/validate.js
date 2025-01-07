@@ -137,6 +137,9 @@
         this_form.find('.loading').slideUp();
         this_form.find('.sent-message').slideDown();
         this_form.find("input:not(input[type=submit]), textarea").val('');
+        setTimeout(function() {
+          this_form.find('.sent-message').slideUp();
+        }, 5000);
       } else {
         this_form.find('.loading').slideUp();
         if(!msg) {
@@ -145,7 +148,7 @@
         this_form.find('.error-message').slideDown().html(msg);
         setTimeout(function() {
           this_form.find('.error-message').slideUp();
-        }, 4000);
+        }, 5000);
       }
     }).fail( function(data){
       console.log(data);
@@ -167,7 +170,7 @@
       this_form.find('.error-message').slideDown().html(error_msg);
       setTimeout(function() {
         this_form.find('.error-message').slideUp();
-      }, 4000);
+      }, 5000);
     });
   }
 

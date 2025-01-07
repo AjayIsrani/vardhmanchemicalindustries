@@ -48,7 +48,7 @@
     <body>
         <div class='container'>
             <div class='header'>
-              <p>' . $name . ' just submitted our home page form on <a href='https://vardhmanchemicalindustries.com' target='_blank'>https://vardhmanchemicalindustries.com</a>.</p>
+              <p>$name has just submitted our home page inquiry form on <a href='https://vardhmanchemicalindustries.com' target='_blank'>vardhmanchemicalindustries.com</a> site.</p>
                 Website Inquiry Notification
             </div>
             <div class='content'>
@@ -57,7 +57,7 @@
                 <p><strong>Subject:</strong> $subject</p>
                 <p><strong>Message:</strong><br>$message</p>
                 <p>Thank you,</p>
-                <a style='text-decoration:none' href='https://vardhmanchemicalindustries.com' target='_blank'><strong><span class='il'>Vardhman Chemical Industries</span> Team</strong></a><br>
+                <p><a style='text-decoration:none' href='https://vardhmanchemicalindustries.com' target='_blank'><strong><span class='il'>Vardhman Chemical Industries</span> Team</strong></a></p>
             </div>
             <div class='footer'>
               <p>This email was generated automatically. Please do not reply.</p>
