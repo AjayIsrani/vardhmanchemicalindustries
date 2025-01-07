@@ -49,7 +49,6 @@
         <div class='container'>
             <div class='header'>
               <p>$name has just submitted our home page inquiry form on <a href='https://vardhmanchemicalindustries.com' target='_blank'>vardhmanchemicalindustries.com</a> site.</p>
-                Website Inquiry Notification
             </div>
             <div class='content'>
                 <p><strong>Name:</strong> $name</p>
@@ -68,7 +67,9 @@
     ";
     ini_set( 'display_errors', 1 );
     error_reporting( E_ALL );
-    $from = "marketing@vardhmanchemicalindustries.com";
+    $fromName = "Vardhman Chemical Website";  // You can change this to any dynamic value
+    $fromEmail = "marketing@vardhmanchemicalindustries.com";  // Make sure this is a valid email
+    $from = "$fromName <$fromEmail>";
     $to = $receiving_email_address;
     $emailSubject = "New Inquiry from Website";
     $headers = "MIME-Version: 1.0" . "\r\n";
