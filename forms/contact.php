@@ -67,8 +67,8 @@
     ";
     ini_set( 'display_errors', 1 );
     error_reporting( E_ALL );
-    $fromName = "Vardhman Chemical Website";  // You can change this to any dynamic value
-    $fromEmail = "marketing@vardhmanchemicalindustries.com";  // Make sure this is a valid email
+    $fromName = "Vardhman Chemical Website"; 
+    $fromEmail = "marketing@vardhmanchemicalindustries.com"; 
     $from = "$fromName <$fromEmail>";
     $to = $receiving_email_address;
     $emailSubject = "New Inquiry from Website";
