@@ -3600,7 +3600,9 @@ html.disable-scroll {
 }
 
 .header-style-4 #site-header .header-button a:hover,
-.header-style-4 .ext > .header-button a:hover {
+.header-style-4 .ext > .header-button a:hover,
+.header-style-4 #site-header .header-button.current-menu-item a,
+.header-style-4 .ext > .header-button.current-menu-item a {
     background-color: #fff;
     color: #030f27 !important;
 }
@@ -4922,18 +4924,27 @@ html.disable-scroll {
 
 #comments .name-wrap,
 #comments .email-wrap,
+#comments .subject-wrap,
+#comments .query-wrap,
+#comments .attachment-wrap,
 #comments .url-wrap {
     float: left;
     width: 32.468%;
 }
 
 #comments .name-wrap,
-#comments .email-wrap {
+#comments .email-wrap,
+#comments .subject-wrap,
+#comments .query-wrap,
+#comments .attachment-wrap {
     margin-right: 1.298%;
 }
 
 #comments .name-wrap input,
 #comments .email-wrap input,
+#comments .subject-wrap input,
+#comments .query-wrap select,
+#comments .attachment-wrap input,
 #comments .url-wrap input,
 #comments .message-wrap textarea {
     width: 100%;
@@ -6558,6 +6569,9 @@ html.disable-scroll {
     }
     #comments .name-wrap,
     #comments .email-wrap,
+    #comments .subject-wrap,
+    #comments .query-wrap,
+    #comments .attachment-wrap,
     #comments .url-wrap {
         width: 100%;
         float: none;
@@ -10639,26 +10653,41 @@ ELEMENTS STYLE
 .wpcf7-form .message-wrap textarea {
     height: 150px;
 }
+.wpcf7-form .attachment-wrap input[type="file"] {
+    width: 100%;
+}
 
 .wpcf7-form .cf7-style-1 .name-wrap,
 .wpcf7-form .cf7-style-1 .email-wrap,
+.wpcf7-form .cf7-style-1 .subject-wrap,
+.wpcf7-form .cf7-style-1 .query-wrap,
+.wpcf7-form .cf7-style-1 .attachment-wrap,
 .wpcf7-form .cf7-style-1 .message-wrap {
     margin-bottom: 20px;
 }
 
 .wpcf7-form .cf7-style-1 .name-wrap input,
 .wpcf7-form .cf7-style-1 .email-wrap input,
+.wpcf7-form .cf7-style-1 .subject-wrap input,
+.wpcf7-form .cf7-style-1 .query-wrap select,
+.wpcf7-form .cf7-style-1 .attachment-wrap input,
 .wpcf7-form .cf7-style-1 .message-wrap textarea {
     background-color: #fff;
 }
 
 .wpcf7-form .cf7-style-1 .name-wrap input,
+.wpcf7-form .cf7-style-1 .subject-wrap input,
+.wpcf7-form .cf7-style-1 .query-wrap select,
+.wpcf7-form .cf7-style-1 .attachment-wrap input,
 .wpcf7-form .cf7-style-1 .email-wrap input {
     padding: 9px 25px;
 }
 
 .wpcf7-form .cf7-style-1 .name-wrap,
 .wpcf7-form .cf7-style-1 .email-wrap,
+.wpcf7-form .cf7-style-1 .subject-wrap,
+.wpcf7-form .cf7-style-1 .query-wrap,
+.wpcf7-form .cf7-style-1 .attachment-wrap,
 .wpcf7-form .cf7-style-1 .message-wrap {
     width: 100%;
 }
@@ -10666,6 +10695,9 @@ ELEMENTS STYLE
 .wpcf7-form .cf7-style-2 .name-wrap,
 .wpcf7-form .cf7-style-2 .phone-wrap,
 .wpcf7-form .cf7-style-2 .email-wrap,
+.wpcf7-form .cf7-style-2 .subject-wrap,
+.wpcf7-form .cf7-style-2 .query-wrap,
+.wpcf7-form .cf7-style-2 .attachment-wrap,
 .wpcf7-form .cf7-style-2 .subject-wrap {
     margin-bottom: 20px;
 }

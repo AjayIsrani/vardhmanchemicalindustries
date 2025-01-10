@@ -93,6 +93,19 @@
         }
         i.parent().parent().next('.validate').html((ierror ? (i.attr('data-msg') != undefined ? i.attr('data-msg') : 'wrong Input') : '')).show('blind');
       }
+      f.children('select').each(function() {
+          var i = $(this); // current select element
+          var rule = i.attr('data-rule');
+
+          if (rule !== undefined && rule === 'required') {
+              var ierror = false;
+              if (i.val() === '' || i.val() === null || i.val() === 'default') { 
+                  ferror = ierror = true;
+              }
+
+              i.parent().parent().next('.validate').html((ierror ? (i.attr('data-msg') != undefined ? i.attr('data-msg') : 'Please select an option') : '')).show('blind');
+          }
+      });
     });
     if (ferror) return false;
 
@@ -116,11 +129,11 @@
       var recaptcha_site_key = $(this).data('recaptcha-site-key');
       grecaptcha.ready(function() {
         grecaptcha.execute(recaptcha_site_key, {action: 'php_email_form_submit'}).then(function(token) {
-          php_email_form_submit(this_form,action,this_form.serialize() + '&recaptcha-response=' + token);
+          php_email_form_submit(this_form,action,new FormData(this) + '&recaptcha-response=' + token);
         });
       });
     } else {
-      php_email_form_submit(this_form,action,this_form.serialize());
+      php_email_form_submit(this_form,action,new FormData(this));
     }
     
     return true;
@@ -131,12 +144,14 @@
       type: "POST",
       url: action,
       data: data,
+      contentType: false,
+      processData: false,
       timeout: 40000
     }).done( function(msg){
       if (msg == 'OK') {
         this_form.find('.loading').slideUp();
         this_form.find('.sent-message').slideDown();
-        this_form.find("input:not(input[type=submit]), textarea").val('');
+        this_form.find("input:not(input[type=submit]), select, textarea").val('');
         setTimeout(function() {
           this_form.find('.sent-message').slideUp();
         }, 5000);
