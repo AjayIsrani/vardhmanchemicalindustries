@@ -23,7 +23,7 @@ try {
     $category = $_POST['category'];
     $product = $_POST['product'];
     $message = $_POST['message'];
-
+    $pageName = !empty($subject) ? "our home page" : (!empty($querytype) ? "our contact us page" : (!empty($country) ? "our export page" :(!empty($state) ? "our domestic page" : "")));
     $mail->isSMTP();                                            
     $mail->Host = 'smtp.hostinger.com';                           
     $mail->SMTPAuth = true;                                     
@@ -48,7 +48,7 @@ try {
     <body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
         <div style='max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; '>
             <div style='background-color: #4CAF50; color: white; padding: 10px 15px; border-radius: 8px 8px 0 0; text-align: center; font-size: 20px;'>
-                <p>$name has just submitted our home page inquiry form on <a href='https://vardhmanchemicalindustries.com' target='_blank'>vardhmanchemicalindustries.com</a> site.</p>
+                <p>$name has just submitted $pageName inquiry form on <a href='https://vardhmanchemicalindustries.com' target='_blank' style='color: rgba(3, 15, 39, 1);'>vardhmanchemicalindustries.com</a> site.</p>
             </div>
             <div style='padding: 15px;'>
                 <p style='margin: 10px 0;'><strong>Name:</strong> $name</p>
@@ -77,7 +77,7 @@ try {
     $emailBody .= "
                 <p style='margin: 10px 0;'><strong>Message:</strong><br>$message</p>
                 <p style='margin: 10px 0;'>Thank you,</p>
-                <p style='margin: 10px 0;'><a style='text-decoration:none' href='https://vardhmanchemicalindustries.com' target='_blank'><strong><span class='il'>Vardhman Chemical Industries</span> Team</strong></a></p>
+                <p style='margin: 10px 0;'><a style='color: rgba(3, 15, 39, 1);text-decoration:none' href='https://vardhmanchemicalindustries.com' target='_blank'><strong><span class='il'>Vardhman Chemical Industries</span> Team</strong></a></p>
             </div>
             <div style='text-align: center; margin-top: 20px; font-size: 12px; color: #666;'>
                 <p style='margin: 10px 0;'>This email was generated automatically. Please do not reply.</p>
@@ -89,7 +89,6 @@ try {
 
     $mail->Body = $emailBody;
 
-    // Send the email
     $mail->send();
     echo "OK";
 } catch (Exception $e) {
