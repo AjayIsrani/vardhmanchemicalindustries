@@ -14,7 +14,7 @@
   $to = $receiving_email_address;
   $emailSubject = "New Inquiry from Website";
   if (isset($_FILES['attachment']) && $_FILES['attachment']['error'] === UPLOAD_ERR_OK) {
-    $boundary = md5(time());
+    $boundary = md5(uniqid(time()));
 
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "From: $from" . "\r\n";
@@ -91,7 +91,7 @@
     $encodedFile = chunk_split(base64_encode($fileData));
 
     $emailBody .= "--$boundary\r\n";
-    $emailBody .= "Content-Type: $fileType; name=\"$fileName\"\r\n";
+    $emailBody .= "Content-Type: application/octet-stream; name=\"$fileName\"\r\n";
     $emailBody .= "Content-Disposition: attachment; filename=\"$fileName\"\r\n";
     $emailBody .= "Content-Transfer-Encoding: base64\r\n\r\n";
     $emailBody .= "$encodedFile\r\n";
