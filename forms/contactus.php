@@ -18,6 +18,10 @@ try {
     $email = $_POST['email'];
     $subject = $_POST['subject'];
     $querytype = $_POST['querytype'];
+    $country = $_POST['country'];
+    $state = $_POST['state'];
+    $category = $_POST['category'];
+    $product = $_POST['product'];
     $message = $_POST['message'];
 
     $mail->isSMTP();                                            
@@ -40,40 +44,43 @@ try {
     $emailBody = "
     <!DOCTYPE html>
     <html>
-    <head>
-        <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-            .container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; }
-            .header { background-color: #4CAF50; color: white; padding: 10px 15px; border-radius: 8px 8px 0 0; text-align: center; font-size: 20px; }
-            .content { padding: 15px; }
-            .content p { margin: 10px 0; }
-            .footer { text-align: center; margin-top: 20px; font-size: 12px; color: #666; }
-        </style>
-    </head>
-    <body>
-        <div class='container'>
-            <div class='header'>
+    <head></head>
+    <body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
+        <div style='max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; '>
+            <div style='background-color: #4CAF50; color: white; padding: 10px 15px; border-radius: 8px 8px 0 0; text-align: center; font-size: 20px;'>
                 <p>$name has just submitted our home page inquiry form on <a href='https://vardhmanchemicalindustries.com' target='_blank'>vardhmanchemicalindustries.com</a> site.</p>
             </div>
-            <div class='content'>
-                <p><strong>Name:</strong> $name</p>
-                <p><strong>Email:</strong> $email</p>
+            <div style='padding: 15px;'>
+                <p style='margin: 10px 0;'><strong>Name:</strong> $name</p>
+                <p style='margin: 10px 0;'><strong>Email:</strong> $email</p>
     ";
 
     if (!empty($subject)) {
-        $emailBody .= "<p><strong>Subject:</strong> $subject</p>";
+        $emailBody .= "<p style='margin: 10px 0;'><strong>Subject:</strong> $subject</p>";
     }
     if (!empty($querytype)) {
-        $emailBody .= "<p><strong>Query Type:</strong> $querytype</p>";
+        $emailBody .= "<p style='margin: 10px 0;'><strong>Query Type:</strong> $querytype</p>";
+    }
+    if (!empty($country)) {
+        $emailBody .= "<p style='margin: 10px 0;'><strong>Country:</strong> $country</p>";
+    }
+    if (!empty($state)) {
+        $emailBody .= "<p style='margin: 10px 0;'><strong>State:</strong> $state</p>";
+    }
+    if (!empty($category)) {
+        $emailBody .= "<p style='margin: 10px 0;'><strong>Category:</strong> $category</p>";
+    }
+    if (!empty($product)) {
+        $emailBody .= "<p style='margin: 10px 0;'><strong>Product:</strong> $product</p>";
     }
 
     $emailBody .= "
-                <p><strong>Message:</strong><br>$message</p>
-                <p>Thank you,</p>
-                <p><a style='text-decoration:none' href='https://vardhmanchemicalindustries.com' target='_blank'><strong><span class='il'>Vardhman Chemical Industries</span> Team</strong></a></p>
+                <p style='margin: 10px 0;'><strong>Message:</strong><br>$message</p>
+                <p style='margin: 10px 0;'>Thank you,</p>
+                <p style='margin: 10px 0;'><a style='text-decoration:none' href='https://vardhmanchemicalindustries.com' target='_blank'><strong><span class='il'>Vardhman Chemical Industries</span> Team</strong></a></p>
             </div>
-            <div class='footer'>
-                <p>This email was generated automatically. Please do not reply.</p>
+            <div style='text-align: center; margin-top: 20px; font-size: 12px; color: #666;'>
+                <p style='margin: 10px 0;'>This email was generated automatically. Please do not reply.</p>
             </div>
         </div>
     </body>

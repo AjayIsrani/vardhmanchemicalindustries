@@ -152,7 +152,8 @@ form.submitting .wpcf7-spinner {
 	cursor: default;
 }
 
-.wpcf7 .wpcf7-submit:disabled {
+.wpcf7 .wpcf7-submit:disabled,
+.wpcf7 .wpcf7-clear:disabled {
 	cursor: not-allowed;
 }
 

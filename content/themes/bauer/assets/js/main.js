@@ -353,13 +353,91 @@
         });
     };
 
+    var categoryChange = function() {
+        const products = {
+            "Waterproofing": [
+                { "pro_id": "1", "pro_name": "Zentex Pum-100" },
+                { "pro_id": "2", "pro_name": "Zentex BM-606" },
+                { "pro_id": "5", "pro_name": "Zentex WM-608" },
+                { "pro_id": "6", "pro_name": "Zentex CEM-2K" },
+                { "pro_id": "7", "pro_name": "Zentex Crete" },
+                { "pro_id": "8", "pro_name": "Zentex MW+" },
+                { "pro_id": "9", "pro_name": "Zentex SBR-50" },
+                { "pro_id": "10", "pro_name": "Zentex SG-101" },
+                { "pro_id": "11", "pro_name": "Zentex BS-Sealer" },
+                { "pro_id": "12", "pro_name": "Zentex FGW" },
+                { "pro_id": "13", "pro_name": "Zentex PP-105" },
+                { "pro_id": "14", "pro_name": "Zentex CRACK FILL" },
+                { "pro_id": "41", "pro_name": "Zentex Damp B Poxy" },
+                { "pro_id": "44", "pro_name": "Zentex EPL" },
+                { "pro_id": "59", "pro_name": "Zentex CRETE Cool-E-Cool" },
+                { "pro_id": "60", "pro_name": "Zentex Damproof Xtreme" },
+                { "pro_id": "61", "pro_name": "Zentex Readyplast E2" },
+                { "pro_id": "55", "pro_name": "Zentex Cote EP-405" },
+                { "pro_id": "64", "pro_name": "Zentex Crystalline Waterproofing" },
+                { "pro_id": "65", "pro_name": "Zentex Black Japan" },
+                { "pro_id": "66", "pro_name": "Zentex Lacquer Hardener" },
+                { "pro_id": "67", "pro_name": "Zentex Road Fiber" },
+                { "pro_id": "68", "pro_name": "Zentex PU Plus" },
+                { "pro_id": "69", "pro_name": "Zentex Water Based Epoxy" }
+            ],
+            "Flooring Systems": [
+                { "pro_id": "3", "pro_name": "Zentex EP -SL 100" },
+                { "pro_id": "4", "pro_name": "Zentex EP-500 MC" },
+                { "pro_id": "17", "pro_name": "Zentex PU-CRETE" },
+                { "pro_id": "18", "pro_name": "Zentex PU-500 MC" },
+                { "pro_id": "19", "pro_name": "Zentex CEM-SL" },
+                { "pro_id": "20", "pro_name": "Zentex CRC" },
+                { "pro_id": "21", "pro_name": "Zentex ACC" },
+                { "pro_id": "22", "pro_name": "Zentex ESD-SL" },
+                { "pro_id": "62", "pro_name": "Zentex clear CS" }
+            ],
+            "Tiles Fixing Adhesives": [
+                { "pro_id": "24", "pro_name": "Zentex TA-WL" },
+                { "pro_id": "25", "pro_name": "Zentex HT-N" },
+                { "pro_id": "26", "pro_name": "Zentex NL-H" },
+                { "pro_id": "27", "pro_name": "Zentex B-Flex" },
+                { "pro_id": "28", "pro_name": "Zentex Epoxy" },
+                { "pro_id": "29", "pro_name": "Zentex WC-Putty" },
+                { "pro_id": "35", "pro_name": "Zentex Tile-Cleaner" },
+                { "pro_id": "43", "pro_name": "Zentex Anchor Grout" },
+                { "pro_id": "47", "pro_name": "Zentex Floor hardener metallic" },
+                { "pro_id": "49", "pro_name": "Zentex Micro Concrete" },
+                { "pro_id": "63", "pro_name": "Zentex Tile Adhesive-FL" },
+                { "pro_id": "54", "pro_name": "Zentax Coal Tar Epoxy" },
+                { "pro_id": "56", "pro_name": "Zentex GP 1- MERGE" },
+                { "pro_id": "57", "pro_name": "Zentex GP 2 -MERGE" }
+            ],
+            "Curing & Admixtures": [
+                { "pro_id": "38", "pro_name": "Zentex AMN-120" },
+                { "pro_id": "39", "pro_name": "Zentex APC-220" },
+                { "pro_id": "37", "pro_name": "Zentex Cure WXB" },
+                { "pro_id": "36", "pro_name": "Zentex Cure WT" },
+                { "pro_id": "48", "pro_name": "Zentex CC-W" }
+            ]
+        };
+    
+        $('#category').change(function () {
+            const selectedCategory = $(this).val();
+            const productDropdown = $('#product');
+            productDropdown.empty().append('<option value="" selected disabled hidden>Select Product</option>');
+            if (selectedCategory && products[selectedCategory]) {
+                products[selectedCategory].forEach(product => {
+                    productDropdown.append(
+                        `<option value="${product.pro_name}">${product.pro_name}</option>`
+                    );
+                });
+            }
+        });
+     };
+
     mobileNav();
     onePage();
     headerFixed();
     scrollToTop();
     widgetSpacer();
     megaMenu();
-
+    categoryChange();
     // Dom Ready
     $(function() {
         

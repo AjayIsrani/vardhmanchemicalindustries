@@ -1212,8 +1212,18 @@ input[type="submit"] {
     -webkit-appearance: none;
     transition: all ease 0.3s;
 }
+input[type="button"].wpcf7-clear{
+    background-color: #6c757d;
+}
+input[type="button"].wpcf7-clear:hover,
+input[type="button"].wpcf7-clear:focus {
+    background-color: #030f27;
+}
 
-
+.wpcf7 .wpcf7-submit:disabled,
+.wpcf7 .wpcf7-clear:disabled {
+	cursor: not-allowed;
+}
 /* Button hover + focus */
 
 button:hover,

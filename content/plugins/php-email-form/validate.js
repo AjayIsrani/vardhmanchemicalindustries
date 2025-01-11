@@ -13,6 +13,7 @@
       ferror = false,
       emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
 
+    $('#submit-form').prop('disabled', true);
     f.children('input').each(function() { // run all inputs
      
       var i = $(this); // current input
@@ -107,8 +108,12 @@
           }
       });
     });
-    if (ferror) return false;
+    if (ferror) {
+      $('#clear-form').prop('disabled', false);
+      return false;
+    }
 
+    $('#submit-form').prop('disabled', false);
     var this_form = $(this);
     var action = $(this).attr('action');
 
@@ -117,7 +122,7 @@
       this_form.find('.error-message').slideDown().html('The form action property is not set!');
       setTimeout(function() {
         this_form.find('.error-message').slideUp();
-      }, 4000);
+      }, 5000);
       return false;
     }
     
@@ -189,4 +194,12 @@
     });
   }
 
+  $('#clear-form').on('click',function(e){
+    $('#submit-form').prop('disabled', false);
+    $('#clear-form').prop('disabled', true);
+    $(this).parent().parent().parent().parent().find('.validate').each(function() {
+      $(this).empty();
+      $(this).removeAttr("style");
+    })
+  });
 })(jQuery);
