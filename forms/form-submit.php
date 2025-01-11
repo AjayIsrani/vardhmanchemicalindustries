@@ -37,6 +37,13 @@ try {
 
     if (isset($_FILES['attachment']) && $_FILES['attachment']['error'] === UPLOAD_ERR_OK) {
         $mail->addAttachment($_FILES['attachment']['tmp_name'], $_FILES['attachment']['name']);
+        $allowedExtensions = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'csv', 'jpg', 'jpeg', 'png', 'gif', 'zip'];
+        $fileExtension = strtolower(pathinfo($_FILES['attachment']['name'], PATHINFO_EXTENSION));
+        if (in_array($fileExtension, $allowedExtensions)) {
+            $mail->addAttachment($_FILES['attachment']['tmp_name'], $_FILES['attachment']['name']);
+        } else {
+            throw new Exception("Invalid file type. Allowed types: " . implode(', ', $allowedExtensions));
+        }
     }
 
     $mail->isHTML(true);                                         

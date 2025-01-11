@@ -12,8 +12,8 @@
     var f = $(this).find('.wpcf7-form-control-wrap'),
       ferror = false,
       emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
+    var allowedFileTypes = ['image/jpeg', 'image/png', 'application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
 
-    $('#submit-form').prop('disabled', true);
     f.children('input').each(function() { // run all inputs
      
       var i = $(this); // current input
@@ -94,26 +94,41 @@
         }
         i.parent().parent().next('.validate').html((ierror ? (i.attr('data-msg') != undefined ? i.attr('data-msg') : 'wrong Input') : '')).show('blind');
       }
-      f.children('select').each(function() {
-          var i = $(this); // current select element
-          var rule = i.attr('data-rule');
+    });
+    f.children('select').each(function() {
+      var i = $(this); // current select element
+      var rule = i.attr('data-rule');
 
-          if (rule !== undefined && rule === 'required') {
-              var ierror = false;
-              if (i.val() === '' || i.val() === null || i.val() === 'default') { 
-                  ferror = ierror = true;
-              }
-
-              i.parent().parent().next('.validate').html((ierror ? (i.attr('data-msg') != undefined ? i.attr('data-msg') : 'Please select an option') : '')).show('blind');
+      if (rule !== undefined && rule === 'required') {
+          var ierror = false;
+          if (i.val() === '' || i.val() === null || i.val() === 'default') { 
+              ferror = ierror = true;
           }
-      });
+
+          i.parent().parent().next('.validate').html((ierror ? (i.attr('data-msg') != undefined ? i.attr('data-msg') : 'Please select an option') : '')).show('blind');
+      }
+    });
+    f.children('input[type="file"]').each(function() {
+      var i = $(this); // current file input
+      var rule = i.attr('data-rule');
+      var ierror = false; // error flag for current file input
+
+      if (rule !== undefined && rule === 'required') {
+          if (i[0].files.length === 0) { // No file selected
+              ferror = ierror = true;
+          }
+      }
+      var file = i[0].files[0];
+      if (file && !allowedFileTypes.includes(file.type)) {
+          ferror = ierror = true;
+        }
+      i.parent().parent().next('.validate').html((ierror ? (i.attr('data-msg') !== undefined ? i.attr('data-msg') : 'Invalid file type. Please upload a valid file. Allowed file types are: jpeg, png, pdf, doc, docx.') : '')).show('blind');
     });
     if (ferror) {
       $('#clear-form').prop('disabled', false);
       return false;
     }
 
-    $('#submit-form').prop('disabled', false);
     var this_form = $(this);
     var action = $(this).attr('action');
 
@@ -156,7 +171,7 @@
       if (msg == 'OK') {
         this_form.find('.loading').slideUp();
         this_form.find('.sent-message').slideDown();
-        this_form.find("input:not(input[type=submit]), select, textarea").val('');
+        this_form.find("input:not(input[type=submit],input[type=button]), select, textarea").val('');
         setTimeout(function() {
           this_form.find('.sent-message').slideUp();
         }, 5000);
@@ -195,7 +210,6 @@
   }
 
   $('#clear-form').on('click',function(e){
-    $('#submit-form').prop('disabled', false);
     $('#clear-form').prop('disabled', true);
     $(this).parent().parent().parent().parent().find('.validate').each(function() {
       $(this).empty();
