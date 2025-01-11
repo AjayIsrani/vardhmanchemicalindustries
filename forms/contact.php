@@ -23,7 +23,7 @@
    $headers .= "--$boundary\r\n";
    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
    $headers .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
-    $emailBody .= "
+   $emailBody = "
     <!DOCTYPE html>
     <html>
     <head>
