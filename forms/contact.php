@@ -1,5 +1,5 @@
 <?php
-  $receiving_email_address = 'praksh@vardhmanchemicalindustries.com';
+  $receiving_email_address = 'ajayisrani3@gmail.com';
   $name = $_POST['name'];
   $email = $_POST['email'];
   $subject = $_POST['subject'];
@@ -14,7 +14,7 @@
   $to = $receiving_email_address;
   $emailSubject = "New Inquiry from Website";
   if (isset($_FILES['attachment']) && $_FILES['attachment']['error'] === UPLOAD_ERR_OK) {
-    $boundary = md5(time());
+    $boundary = md5(uniqid(time()));
 
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "From: $from" . "\r\n";
