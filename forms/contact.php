@@ -20,10 +20,10 @@
     $headers .= "From: $from" . "\r\n";
     $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"" . "\r\n";
 
-   $headers .= "--$boundary\r\n";
-   $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-   $headers .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
-   $emailBody = "
+    $emailBody = "--$boundary\r\n";
+    $emailBody .= "Content-Type: text/html; charset=UTF-8\r\n";
+    $emailBody .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
+    $emailBody .= "
     <!DOCTYPE html>
     <html>
     <head>
