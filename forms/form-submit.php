@@ -17,13 +17,14 @@ try {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $subject = $_POST['subject'];
+    $phone = $_POST['phone'];
     $querytype = $_POST['querytype'];
     $country = $_POST['country'];
     $state = $_POST['state'];
     $category = $_POST['category'];
     $product = $_POST['product'];
     $message = $_POST['message'];
-    $pageName = !empty($subject) ? "our home page" : (!empty($querytype) ? "our contact us page" : (!empty($country) ? "our export page" :(!empty($state) ? "our domestic page" : "")));
+    $pageName = !empty($subject) ? "our home page" : (!empty($querytype) ? "our contact us page" : (!empty($country) ? "our export page" :(!empty($state) ? "our domestic page" : (!empty($phone) ? "our careers page" : ""))));
     $mail->isSMTP();                                            
     $mail->Host = 'smtp.hostinger.com';                           
     $mail->SMTPAuth = true;                                     
@@ -61,7 +62,9 @@ try {
                 <p style='margin: 10px 0;'><strong>Name:</strong> $name</p>
                 <p style='margin: 10px 0;'><strong>Email:</strong> $email</p>
     ";
-
+    if (!empty($phone)) {
+        $emailBody .= "<p style='margin: 10px 0;'><strong>Phone:</strong> $phone</p>";
+    }
     if (!empty($subject)) {
         $emailBody .= "<p style='margin: 10px 0;'><strong>Subject:</strong> $subject</p>";
     }

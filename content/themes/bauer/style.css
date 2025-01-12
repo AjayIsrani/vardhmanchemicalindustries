@@ -5341,6 +5341,10 @@ html.disable-scroll {
     color: #fff;
 }
 
+#sidebar .widget.widget_links ul li a.current-menu-item,
+#footer-widgets .widget.widget_links ul li a.current-menu-item {
+    color: #fff;
+}
 
 /* Widget: Twitter */
 

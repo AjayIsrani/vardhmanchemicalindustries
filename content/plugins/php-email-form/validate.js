@@ -11,7 +11,8 @@
     
     var f = $(this).find('.wpcf7-form-control-wrap'),
       ferror = false,
-      emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
+      emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i,
+      phoneExp = /^(?:\+?(?:\d(?:\(\d{3}\)|-\d{3})-\d{3}-(?:\d{2}-\d{2}|\d{4})|\d{11})|\d{10})$/;
     var allowedFileTypes = ['image/jpeg', 'image/png', 'application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
 
     f.children('input').each(function() { // run all inputs
@@ -47,7 +48,11 @@
               ferror = ierror = true;
             }
             break;
-
+          case 'phone':
+              if (!phoneExp.test(i.val())) {
+                ferror = ierror = true;
+              }
+              break;
           case 'checked':
             if (! i.is(':checked')) {
               ferror = ierror = true;
