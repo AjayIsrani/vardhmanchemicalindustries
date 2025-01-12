@@ -126,8 +126,9 @@
       var file = i[0].files[0];
       if (file && !allowedFileTypes.includes(file.type)) {
           ferror = ierror = true;
-        }
-      i.parent().parent().next('.validate').html((ierror ? (i.attr('data-msg') !== undefined ? i.attr('data-msg') : 'Invalid file type. Please upload a valid file. Allowed file types are: jpeg, png, pdf, doc, docx.') : '')).show('blind');
+          rule === 'validateType';
+      }
+      i.parent().parent().next('.validate').html((ierror ? (i.attr('data-msg') !== undefined ? i.attr('data-msg') :(rule !== undefined && rule === 'required'?"Please upload a valid file": 'Invalid file type. Please upload a valid file. Allowed file types are: jpeg, png, pdf, doc, docx.')) : '')).show('blind');
     });
     if (ferror) {
       $('#clear-form').prop('disabled', false);
